@@ -1,25 +1,199 @@
 <!doctype html>
-<html lang="zh-CN">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>张三的个人主页</title>
-<style>
-  body {
-    max-width: 760px;
-    margin: 64px auto;
-    padding: 0 24px;
-    font-family: system-ui, sans-serif;
-    line-height: 1.8;
-    color: #222;
-  }
-  a { color: #2563eb; }
-</style>
-<h1>张三</h1>
-<p>你好！我关注计算机视觉、三维重建和生成式人工智能。</p>
-<h2>关于我</h2>
-<p>这里填写你的经历、研究方向或个人介绍。</p>
-<h2>项目</h2>
-<p><a href="https://github.com/你的用户名">我的 GitHub</a></p>
-<h2>联系我</h2>
-<p><a href="mailto:you@example.com">you@example.com</a></p>
+<html lang="zh-CN" data-language="zh">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="侯林杰（Linjie Hou），智元机器人算法工程师，关注三维重建与生成、多视图几何、3D Gaussian Splatting 和世界模型。联系邮箱：houlinjie@agibot.com。">
+    <meta name="theme-color" content="#ffffff">
+    <title>关于我 · 侯林杰 Linjie Hou</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --text: #30383c;
+        --muted: #69757b;
+        --blue: #226d9b;
+        --line: #e8ecee;
+        --soft: #f5f7f8;
+        font-family: Georgia, "Noto Serif CJK SC", "Source Han Serif SC", "Songti SC", SimSun, serif;
+        color: var(--text);
+        background: #fff;
+        font-synthesis: none;
+        -webkit-font-smoothing: antialiased;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; font-size: 17px; line-height: 1.85; }
+      a { color: var(--blue); text-decoration: none; text-underline-offset: 4px; }
+      a:hover { text-decoration: underline; }
+      a:focus-visible, button:focus-visible { outline: 2px solid var(--blue); outline-offset: 5px; border-radius: 2px; }
+      .skip-link { position: absolute; top: 8px; left: 16px; z-index: 3; transform: translateY(-160%); padding: 8px 16px; background: #fff; border: 1px solid var(--line); }
+      .skip-link:focus { transform: none; }
+      .site-header { min-height: 82px; padding: 18px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 1px solid #f2f4f5; }
+      .brand { color: var(--text); font-size: 23px; font-weight: 700; letter-spacing: -.025em; white-space: nowrap; }
+      .site-nav { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; font-size: 15px; }
+      .site-nav a { color: var(--muted); min-height: 44px; display: inline-flex; align-items: center; }
+      .site-nav a:hover { color: var(--blue); }
+      main { max-width: 824px; padding: 0 24px; margin: 52px auto 72px; }
+      .page-heading { margin-bottom: 24px; }
+      h1 { margin: 0 0 10px; font-size: 32px; line-height: 1.45; letter-spacing: .03em; }
+      .language-toggle { display: none; padding: 4px 0; min-height: 44px; border: 0; background: transparent; color: var(--blue); font: inherit; cursor: pointer; }
+      .language-toggle:hover { text-decoration: underline; text-underline-offset: 4px; }
+      .js-ready .language-toggle { display: inline-block; }
+      section { margin-top: 30px; scroll-margin-top: 24px; }
+      h2 { margin: 0 0 16px; padding-bottom: 6px; border-bottom: 1px solid var(--line); font-size: 24px; line-height: 1.6; font-weight: 700; }
+      p { margin: 0 0 15px; }
+      strong { font-weight: 700; }
+      .profile-links { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; margin: 14px 0 12px; }
+      .email-line { display: flex; align-items: baseline; flex-wrap: wrap; gap: 8px 14px; margin: 0; }
+      .email-line a { padding: 2px 9px; border-radius: 3px; background: var(--soft); font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace; font-size: 14px; overflow-wrap: anywhere; }
+      ul { margin: 0; padding-left: 1.45em; }
+      li { padding-left: 3px; margin: 5px 0; }
+      .date { color: var(--muted); font-variant-numeric: tabular-nums; }
+      .secondary { color: var(--muted); }
+      .research-list li { margin: 7px 0; }
+      .publication { padding: 3px 0 0; }
+      .paper-title { margin: 0 0 8px; font-size: 18px; line-height: 1.65; font-weight: 600; }
+      .paper-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 15px; }
+      .contact-note { color: var(--muted); }
+      .site-footer { max-width: 776px; margin: 0 auto; padding: 24px 0 32px; border-top: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 13px; color: var(--muted); }
+      .footer-links { display: flex; align-items: center; gap: 20px; }
+      html[data-language="zh"] [data-lang="en"], html[data-language="en"] [data-lang="zh"] { display: none; }
+      @media (max-width: 700px) {
+        .site-header { padding: 16px 24px; gap: 8px 20px; flex-wrap: wrap; }
+        .brand { font-size: 21px; }
+        .site-nav { gap: 20px; font-size: 14px; }
+        main { margin-top: 34px; margin-bottom: 48px; }
+        body { font-size: 16px; }
+        h1 { font-size: 29px; }
+        h2 { font-size: 22px; }
+        .site-footer { margin: 0 24px; }
+      }
+      @media (max-width: 380px) { .site-nav { gap: 16px; } .email-line a { font-size: 13px; } }
+      @media print {
+        .site-header, .language-toggle, .skip-link, .footer-links { display: none !important; }
+        main { margin: 0; max-width: none; padding: 0; }
+        section { break-inside: avoid; }
+        .site-footer { margin-top: 28px; }
+      }
+    </style>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Linjie Hou",
+        "alternateName": "侯林杰",
+        "email": "mailto:houlinjie@agibot.com",
+        "jobTitle": "Algorithm Engineer",
+        "worksFor": { "@type": "Organization", "name": "AGIBOT（智元机器人）" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Zhengzhou University（郑州大学）" },
+        "sameAs": ["https://github.com/ljhou"],
+        "knowsAbout": ["3D Vision", "Multi-view Geometry", "3D Gaussian Splatting", "World Models"]
+      }
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main"><span data-lang="zh">跳到正文</span><span data-lang="en" lang="en">Skip to content</span></a>
+    <header class="site-header">
+      <a class="brand" href="./">Linjie Hou</a>
+      <nav class="site-nav" aria-label="主导航">
+        <a href="#bio"><span data-lang="zh">关于我</span><span data-lang="en" lang="en">About</span></a>
+        <a href="#education"><span data-lang="zh">教育经历</span><span data-lang="en" lang="en">Education</span></a>
+        <a href="#research"><span data-lang="zh">研究方向</span><span data-lang="en" lang="en">Research</span></a>
+        <a href="#publications"><span data-lang="zh">论文</span><span data-lang="en" lang="en">Publications</span></a>
+      </nav>
+    </header>
+    <main id="main">
+      <div class="page-heading">
+        <h1><span data-lang="zh">关于我</span><span data-lang="en" lang="en">About Me</span></h1>
+        <button class="language-toggle" type="button" id="language-toggle" aria-label="Switch to English" lang="en">English version</button>
+      </div>
+
+      <section id="bio" aria-labelledby="bio-heading">
+        <h2 id="bio-heading"><span data-lang="zh">简介</span><span data-lang="en" lang="en">Bio</span></h2>
+        <p data-lang="zh">欢迎来到我的个人主页。我是<strong>侯林杰（Linjie Hou）</strong>，目前是<strong>智元机器人</strong>的算法工程师，主要负责三维数据重建与生成相关算法，工作涉及多视图几何（Multi-view Geometry）、3D Gaussian Splatting（3DGS）、世界模型与三维视觉。</p>
+        <p data-lang="en" lang="en">Welcome to my personal homepage. I am <strong>Linjie Hou (侯林杰)</strong>, an algorithm engineer at <strong>AGIBOT (智元机器人)</strong>. I work on algorithms for 3D data reconstruction and generation, including multi-view geometry, 3D Gaussian Splatting (3DGS), world models, and 3D vision.</p>
+        <p data-lang="zh">我在机器人领域有丰富的工作经验，曾在智行者、高仙机器人、集度科技等公司工作。</p>
+        <p data-lang="en" lang="en">I have extensive experience in robotics, with previous roles at UISEE (智行者), Gaussian Robotics (高仙机器人), and JIDU (集度科技).</p>
+        <div class="profile-links">
+          <a href="https://github.com/ljhou">[GitHub]</a>
+          <a href="https://ieeexplore.ieee.org/document/9982137">[IEEE Xplore]</a>
+        </div>
+        <p class="email-line"><strong><span data-lang="zh">邮箱：</span><span data-lang="en" lang="en">Email:</span></strong><a href="mailto:houlinjie@agibot.com">houlinjie@agibot.com</a></p>
+      </section>
+
+      <section id="education" aria-labelledby="education-heading">
+        <h2 id="education-heading"><span data-lang="zh">教育经历</span><span data-lang="en" lang="en">Education</span></h2>
+        <ul>
+          <li><span class="date">2011.09 – 2015.06</span><span data-lang="zh">：郑州大学。</span><span data-lang="en" lang="en">: Zhengzhou University.</span></li>
+        </ul>
+      </section>
+
+      <section id="experience" aria-labelledby="experience-heading">
+        <h2 id="experience-heading"><span data-lang="zh">职业经历</span><span data-lang="en" lang="en">Experience</span></h2>
+        <ul>
+          <li data-lang="zh"><strong>智元机器人</strong> · 算法工程师 <span class="secondary">（目前）</span></li>
+          <li data-lang="en" lang="en"><strong>AGIBOT</strong> · Algorithm Engineer <span class="secondary">(current)</span></li>
+          <li data-lang="zh">曾任职于智行者、高仙机器人、集度科技。</li>
+          <li data-lang="en" lang="en">Previously at UISEE, Gaussian Robotics, and JIDU.</li>
+        </ul>
+      </section>
+
+      <section id="research" aria-labelledby="research-heading">
+        <h2 id="research-heading"><span data-lang="zh">研究与工作方向</span><span data-lang="en" lang="en">Research Interests</span></h2>
+        <ul class="research-list">
+          <li><span data-lang="zh">三维视觉与三维重建 <span class="secondary">(3D Vision &amp; Reconstruction)</span></span><span data-lang="en" lang="en">3D Vision &amp; Reconstruction</span></li>
+          <li><span data-lang="zh">世界模型 <span class="secondary">(World Models)</span></span><span data-lang="en" lang="en">World Models</span></li>
+          <li><span data-lang="zh">多视图几何 <span class="secondary">(Multi-view Geometry)</span></span><span data-lang="en" lang="en">Multi-view Geometry</span></li>
+          <li><span data-lang="zh">三维高斯表示与生成 <span class="secondary">(3D Gaussian Splatting &amp; Generation)</span></span><span data-lang="en" lang="en">3D Gaussian Splatting &amp; Generation</span></li>
+        </ul>
+      </section>
+
+      <section id="publications" aria-labelledby="publications-heading">
+        <h2 id="publications-heading"><span data-lang="zh">论文</span><span data-lang="en" lang="en">Publications</span></h2>
+        <article class="publication" aria-labelledby="paper-title">
+          <h3 class="paper-title" id="paper-title" lang="en"><a href="https://ieeexplore.ieee.org/document/9982137">A Deep-Learning-based System for Indoor Active Cleaning</a></h3>
+          <a class="paper-link" href="https://ieeexplore.ieee.org/document/9982137"><span data-lang="zh">[论文 · IEEE Xplore]</span><span data-lang="en" lang="en">[Paper · IEEE Xplore]</span></a>
+        </article>
+      </section>
+
+      <section id="contact" aria-labelledby="contact-heading">
+        <h2 id="contact-heading"><span data-lang="zh">联系我</span><span data-lang="en" lang="en">Contact</span></h2>
+        <p class="contact-note" data-lang="zh">欢迎就三维视觉、世界模型与机器人相关话题交流。</p>
+        <p class="contact-note" data-lang="en" lang="en">Feel free to get in touch about 3D vision, world models, and robotics.</p>
+        <p><a href="mailto:houlinjie@agibot.com">houlinjie@agibot.com</a></p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>© 2026 Linjie Hou · <span lang="zh-CN">侯林杰</span></span>
+      <div class="footer-links"><a href="https://github.com/ljhou">GitHub</a><a href="#main"><span data-lang="zh">返回顶部 ↑</span><span data-lang="en" lang="en">Back to top ↑</span></a></div>
+    </footer>
+    <script>
+      (() => {
+        const root = document.documentElement;
+        const button = document.getElementById("language-toggle");
+        const nav = document.querySelector(".site-nav");
+        function setLanguage(language) {
+          const english = language === "en";
+          root.dataset.language = english ? "en" : "zh";
+          root.lang = english ? "en" : "zh-CN";
+          button.textContent = english ? "中文版" : "English version";
+          button.lang = english ? "zh-CN" : "en";
+          button.setAttribute("aria-label", english ? "切换到中文" : "Switch to English");
+          nav.setAttribute("aria-label", english ? "Main navigation" : "主导航");
+          document.title = english ? "About Me · Linjie Hou 侯林杰" : "关于我 · 侯林杰 Linjie Hou";
+        }
+        const url = new URL(window.location.href);
+        setLanguage(url.searchParams.get("lang") === "en" ? "en" : "zh");
+        root.classList.add("js-ready");
+        button.addEventListener("click", () => {
+          const language = root.dataset.language === "en" ? "zh" : "en";
+          setLanguage(language);
+          const nextUrl = new URL(window.location.href);
+          if (language === "en") nextUrl.searchParams.set("lang", "en");
+          else nextUrl.searchParams.delete("lang");
+          window.history.replaceState(null, "", nextUrl);
+        });
+      })();
+    </script>
+  </body>
 </html>
